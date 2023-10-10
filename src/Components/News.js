@@ -12,7 +12,7 @@ const News = (props) => {
 
 
     const updateNews = async () => {
-        props.setProgress(10);
+        props.setProgress(10);  //percentage loading bar to be loaded.
         let url = `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=${props.apiKey}&page=${page}&pageSize=${props.pageSize}`;
 
         setLoading(true)
@@ -20,7 +20,7 @@ const News = (props) => {
         props.setProgress(30);
         let parsedData = await data.json();
         props.setProgress(70);
-        setArticles(parsedData.articles)
+        setArticles(parsedData.articles) //the no of articles fetched is stored in articles.
         setTotalResults(parsedData.totalResults)
         setLoading(false)
         props.setProgress(100);
@@ -34,7 +34,7 @@ const News = (props) => {
     // The second parameter is to specify the event for which to listen...now its[] means it runs only once.
 
     // const componentDidMount= async()=> {
-    {/*an async function waits for the promises to be completed or resolved inside its body*/ }
+    /*an async function waits for the promises to be completed or resolved inside its body*/ 
     // let url = `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=d497654e1e4041199c470a1fb721a453&page=1&pageSize=${props.pageSize}`;
     // this.setState({ loading: true })
     // let data = await fetch(url);
@@ -48,7 +48,7 @@ const News = (props) => {
     // console.log(this.state.page);
     // this.updateNews();
     // }
-    const handlePreviousClick = async () => {
+    // const handlePreviousClick = async () => {
 
         // let url = `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=d497654e1e4041199c470a1fb721a453&page=${this.state.page - 1}&pageSize=${props.pageSize}`;
         // this.setState({ loading: true })
@@ -62,14 +62,14 @@ const News = (props) => {
 
         // })
         // await this.setState({ page: this.state.page - 1 })
-        await setPage(page - 1)
-        updateNews()
-    }
+    //     await setPage(page - 1)
+    //     updateNews()
+    // }
 
-    const handleNextClick = async () => {
-        await setPage(page + 1)
-        updateNews()
-    }
+    // const handleNextClick = async () => {
+    //     await setPage(page + 1)
+    //     updateNews()
+    // }
 
     const fetchMoreData = async () => {
 
